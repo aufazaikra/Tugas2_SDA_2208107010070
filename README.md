@@ -22,18 +22,18 @@ gcc 2208107010070_Simple_Sorting.c -o 2208107010070_Simple_Sorting
 #
 # Fungsi yang digunakan di dalam kode program
 
-- generateRandomNumbers(int n) : Fungsi untuk menghasilkan angka acak sebanyak n lalu menyimpannya ke dalam file random_numbers.txt dengan sebuah parameter n bertipe int.
+- generateRandomNumbers : Fungsi untuk menghasilkan angka acak sebanyak n lalu menyimpannya ke dalam file random_numbers.txt 
 #
-- bubbleSort(int arr[], int n) : Fungsi untuk melakukan pengurutan menggunakan algoritma bubble sort dengan parameter arr dan n.
+- bubbleSort : Fungsi untuk melakukan pengurutan menggunakan algoritma bubble sort 
 #
-- selectionSort(int arr[], int n) : Fungsi untuk melakukan pengurutan menggunakan algoritma selection sort dengan parameter arr dan n.
+- selectionSort : Fungsi untuk melakukan pengurutan menggunakan algoritma selection sort 
 #
-- insertionSort(int arr[], int n) : Fungsi untuk melakukan pengurutan menggunakan algoritma insertion sort dengan parameter arr dan n.
+- insertionSort : Fungsi untuk melakukan pengurutan menggunakan algoritma insertion sort 
 #
-- main() : Fungsi yang berisi alur jalannya kode program.
+- main() : Fungsi yang berisi alur kode program
 #
 #
-# Pemilik
+#
 
 | Nama        | NPM           |
 | ------------- |:-------------:|
