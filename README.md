@@ -5,9 +5,9 @@ Sebuah kode program yang bisa melakukan pengurutan bilangan acak secara bubble s
 # Hal Yang Diperlukan
 - Teks Editor
 - Compiler
-- Membuat sebuah file bernama random_numbers.txt
-- Membuat sebuah file bernama sorted_numbers.txt
-- Membuat sebuah file bernama unsorted_numbers.txt
+- File bernama random_numbers.txt
+- File bernama sorted_numbers.txt
+- File bernama unsorted_numbers.txt
 
 # Cara Menjalankan Kode Program
 
