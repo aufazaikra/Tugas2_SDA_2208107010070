@@ -6,9 +6,9 @@
 // fungsi untuk menghasilkan angka acak dan menyimpannya dalam file
 void generateRandomNumbers(int n) {
     FILE *fp;
-    fp = fopen("random_numbers.txt", "w");
+    fp = fopen("angka_random.txt", "w");
     if (fp == NULL) {
-        printf("Error opening file!\n");
+        printf("Error membuka file!\n");
         exit(1);
     }
 
@@ -60,16 +60,24 @@ void selectionSort(int arr[], int n) {
 
 // fungsi insertion sort
 void insertionSort(int arr[], int n) {
+    clock_t start, end;
+    double waktu;
+    
+    start = clock();
     for (int i = 1; i < n; i++) {
         int key = arr[i];
         int j = i - 1;
 
-        while (key < arr[j] && j >= 0) {
+        while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            --j;
+            j--;
         }
         arr[j + 1] = key;
     }
+    end = clock();
+
+    waktu = ((double) (end - start) * 1000) / CLOCKS_PER_SEC;
+    printf("waktu yang dibutuhkan algoritma insertion sort untuk jumlah bilangan %d adalah %.2f ms\n", n, waktu);
 }
 
 int main() {
@@ -80,17 +88,17 @@ int main() {
     int increment = 100000;
 
     FILE *fp_sorted, *fp_unsorted;
-    fp_sorted = fopen("sorted_numbers.txt", "w");
-    fp_unsorted = fopen("unsorted_numbers.txt", "w");
+    fp_sorted = fopen("angka_terurut.txt", "w");
+    fp_unsorted = fopen("angka_tak_terurut.txt", "w");
     if (fp_sorted == NULL || fp_unsorted == NULL) {
-        printf("Error opening file!\n");
+        printf("Error membuka file!\n");
         exit(1);
     }
 
     for (int n = increment; n <= max_size; n += increment) {
         int *arr = (int *)malloc(n * sizeof(int));
         if (arr == NULL) {
-            printf("Memory allocation failed!\n");
+            printf("Alokasi memori gagal!\n");
             exit(1);
         }
  
@@ -98,9 +106,9 @@ int main() {
 
         // membaca nomor acak dari file
         FILE *fp;
-        fp = fopen("random_numbers.txt", "r");
+        fp = fopen("angka_random.txt", "r");
         if (fp == NULL) {
-            printf("Error opening file!\n");
+            printf("Error membuka file!\n");
             exit(1);
         }
 
@@ -118,8 +126,8 @@ int main() {
         start = clock();
         bubbleSort(arr, n);
         end = clock();
-        waktu = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Bubble Sort for %d numbers: %f seconds\n", n, waktu);
+        waktu = ((double) (end - start) * 1000) / CLOCKS_PER_SEC;
+        printf("waktu yang dibutuhkan algoritma bubble sort untuk jumlah bilangan %d adalah %.2f ms\n", n, waktu);
 
         // menulis nomor yang sudah diurutkan ke file
         for (int i = 0; i < n; i++) {
@@ -130,8 +138,8 @@ int main() {
         start = clock();
         selectionSort(arr, n);
         end = clock();
-        waktu = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Selection Sort for %d numbers: %f seconds\n", n, waktu);
+        waktu = ((double) (end - start) * 1000) / CLOCKS_PER_SEC;
+        printf("waktu yang dibutuhkan algoritma selection sort untuk jumlah bilangan %d adalah %.2f ms\n", n, waktu);
 
         // menulis nomor yang sudah diurutkan ke file
         for (int i = 0; i < n; i++) {
@@ -139,12 +147,8 @@ int main() {
         }
 
         // Insertion Sort
-        start = clock();
         insertionSort(arr, n);
-        end = clock();
-        waktu = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Insertion Sort for %d numbers: %f seconds\n", n, waktu);
-
+        
         // menulis nomor yang sudah diurutkan ke file
         for (int i = 0; i < n; i++) {
             fprintf(fp_sorted, "%d\n", arr[i]);
